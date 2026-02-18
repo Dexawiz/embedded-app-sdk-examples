@@ -4,6 +4,9 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	envDir: '../../',
 	server: {
+		allowedHosts: [
+      'optimization-stated-buck-interventions.trycloudflare.com'
+    ],
 		port: 3000,
 		proxy: {
 			'/api': {
