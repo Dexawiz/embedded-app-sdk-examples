@@ -4,10 +4,9 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	envDir: '../../',
 	server: {
-		allowedHosts: [
-      'optimization-stated-buck-interventions.trycloudflare.com'
-    ],
+		allowedHosts: true,
 		port: 3000,
+		strictPort: true,
 		proxy: {
 			'/api': {
 				target: 'http://localhost:3001',
@@ -17,7 +16,9 @@ export default defineConfig({
 			},
 		},
 		hmr: {
-			clientPort: 443,
+			protocol: 'ws',    
+     		host: 'localhost',  
+     		port: 3000,
 		},
 	},
 });

@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Discord Embedded App Starter</title>
+    <title>Discord Karaoke</title>
   </head>
   <body>
-    <div id="app">сасамба хуямба</div>
-  
+    <div id="sync-overlay"></div>
+
+    <div id="app">
+      <header>
+      <h1>Karaoke Mode: <span class="status">ON</span></h1>
+      <p id="playback-status">Audio is paused</p>
+      
+      <div class="controls">
+        <button id="play-btn" class="main-btn">Включить хит</button>
+        
+        <div class="playback-bar">
+          <button id="pause-btn">||</button>
+
+          <div class="progress-wrapper" style="display: flex; align-items: center; flex-grow: 1; margin: 0 15px; gap: 10px;">
+            <span id="current-time-display" style="font-size: 12px; min-width: 35px;">00:00</span>
+            
+            <div id="progress-container" style="flex-grow: 1; background: #4f545c; height: 6px; border-radius: 3px; position: relative; cursor: pointer; overflow: hidden;">
+              <div id="progress-fill" style="background: #5865f2; width: 0%; height: 100%; transition: width 0.1s linear;"></div>
+            </div>
+
+            <span id="duration-display" style="font-size: 12px; min-width: 35px;">00:00</span>
+          </div>
+
+          <div class="volume-box">
+            <label>🔊</label>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+            <span id="volume-display">50%</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+      <main id="lyrics-wrapper">
+        <div id="lyrics-list">
+          <p class="lyric-line">Загрузка текста...</p>
+        </div>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
